@@ -20,13 +20,9 @@ $green: #49ff52;
 .forceContainer {
     position: relative;
     text-align: center;
-    &:hover {
-        .force-button {
-            filter: drop-shadow(5px 20px 50px #7777f3);
-        }
-    }
 }
 .forceTitle {
+    pointer-events: none;
     cursor: pointer;
     width: 100%;
     position: absolute;
@@ -44,6 +40,9 @@ $green: #49ff52;
     height: auto;
     transition: all 0.33s ease-in-out;
     filter: drop-shadow(5px 20px 20px $blue);
+    &:hover {
+        filter: drop-shadow(5px 20px 50px #7777f3);
+    }
 }
 .column {
     height: 100%;

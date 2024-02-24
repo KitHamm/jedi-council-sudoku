@@ -19,7 +19,7 @@ This relic is already located on the planet of [Vercel](https://jedi-council-sud
 
 You can either enter the puzzle that Count Sudoku has given you, and then use the force to generate a solution.
 
-Or, if you believe you need more training, you can ask it to create a new Sudoku puzzle for you to try.
+Or, if you believe you need more training, you can ask it to create a new Sudoku puzzle for you to try, and check the answer using the force.
 
 ## Back To Reality
 

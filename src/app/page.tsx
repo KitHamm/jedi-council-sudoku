@@ -1,14 +1,25 @@
+// Use client because of useState hooks
 "use client";
 
+// React Imports
 import { useState } from "react";
+
+// Next Imports
+import Image from "next/image";
+
+// Sudoku Helper Imports
 import {
     solveSudoku,
     validateBoard,
     generateSudoku,
 } from "./sudoku/sudokuHelper";
-import Image from "next/image";
+
+// Style Imports
 import styles from "./page.module.scss";
+
+// Custom Component Imports
 import Board from "@/components/Board";
+
 export default function Home() {
     const emptyBoard: string[][] = [
         ["", "", "", "", "", "", "", "", ""],
@@ -21,6 +32,8 @@ export default function Home() {
         ["", "", "", "", "", "", "", "", ""],
         ["", "", "", "", "", "", "", "", ""],
     ];
+
+    // States for board, readOnly on cell inputs, and board validity
     const [validBoard, setValidBoard] = useState<boolean>(true);
     const [board, setBoard] = useState<string[][]>(emptyBoard);
     const [readOnly, setReadOnly] = useState<boolean[][]>(
@@ -61,10 +74,12 @@ export default function Home() {
 
     // Function to set the readOnly state of the inputs when generating a new board
     function handleReadOnly(board: string[][]) {
+        // Create board with all false read only states
         let tempReadOnly: boolean[][] = [];
         for (let i = 0; i < board.length; i++) {
             tempReadOnly[i] = Array(9).fill(false);
         }
+        // Populate board with true readOnly states if there is a value in the cell
         for (let i = 0; i < board.length; i++) {
             for (let j = 0; j < board.length; j++) {
                 if (board[i][j] !== "") {

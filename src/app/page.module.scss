@@ -5,22 +5,19 @@ $cellSize: 3rem;
 $blue: #588ccf;
 $green: #49ff52;
 
-.antaRegular {
-    font-family: "Anta", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
 .main {
     display: flex;
     min-height: 100dvh;
     overflow: hidden;
     align-items: center;
 }
+
+// Use Force Styling
 .forceContainer {
     position: relative;
     text-align: center;
 }
+
 .forceTitle {
     pointer-events: none;
     cursor: pointer;
@@ -33,6 +30,7 @@ $green: #49ff52;
     color: sandybrown;
     text-shadow: 0px 0px 20px black;
 }
+
 .forceButton {
     cursor: pointer;
     margin: auto;
@@ -44,12 +42,16 @@ $green: #49ff52;
         filter: drop-shadow(5px 20px 50px #7777f3);
     }
 }
+
+// Layout Styling
 .column {
     height: 100%;
     position: relative;
     width: 33.333%;
     flex-grow: 1;
 }
+
+// Button Styling
 .buttonContainer {
     display: flex;
     flex-direction: column;
@@ -62,6 +64,28 @@ $green: #49ff52;
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
+.boardButton {
+    font-family: "Anta", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 30pt;
+    cursor: pointer;
+    margin: auto;
+    width: 50%;
+    height: 5rem;
+    border: solid 5px rgba($color: #000000, $alpha: 0.75);
+    background-color: green;
+    background-image: url("/stone.jpg");
+    border-radius: 0.5rem;
+    color: black;
+    transition: all 0.33s ease-in-out;
+    &:hover {
+        border: solid 5px rgba($color: #ffffff, $alpha: 0.75);
+    }
+}
+
+// Board Styling
 .boardContainer {
     width: fit-content;
     margin: auto;
@@ -71,6 +95,7 @@ $green: #49ff52;
     box-shadow: 0 0 50px 15px rgba($color: $blue, $alpha: 0.25);
     animation: pulse 1s ease-in-out alternate-reverse infinite;
 }
+
 @keyframes pulse {
     from {
         box-shadow: 0 0 50px 15px rgba($color: $blue, $alpha: 0.25);
@@ -81,16 +106,7 @@ $green: #49ff52;
         background-color: rgba($color: $blue, $alpha: 0.5);
     }
 }
-.infoContainer {
-    border: solid 3px black;
-    background-color: rgba($color: $blue, $alpha: 0.16);
-    backdrop-filter: blur(4px);
-    border-radius: 1rem;
-    width: 50%;
-    margin: auto;
-    color: white;
-    padding: 3rem;
-}
+
 .puzzleRow {
     display: flex;
     &:nth-child(3) {
@@ -100,6 +116,7 @@ $green: #49ff52;
         border-bottom: solid 5px rgba($color: #ffffff, $alpha: 0.5);
     }
 }
+
 .boardGrid {
     &:nth-child(3) {
         border-right: solid 5px rgba($color: #ffffff, $alpha: 0.5);
@@ -108,6 +125,7 @@ $green: #49ff52;
         border-right: solid 5px rgba($color: #ffffff, $alpha: 0.5);
     }
 }
+
 .puzzleCol {
     background-color: black;
     opacity: 95%;
@@ -123,6 +141,7 @@ $green: #49ff52;
     line-height: 1px;
     padding: 0;
 }
+
 .prefilled {
     color: $blue;
     font-family: "Anta", sans-serif;
@@ -135,6 +154,19 @@ $green: #49ff52;
         cursor: default;
     }
 }
+
+// Info Styling
+.infoContainer {
+    border: solid 3px black;
+    background-color: rgba($color: $blue, $alpha: 0.16);
+    backdrop-filter: blur(4px);
+    border-radius: 1rem;
+    width: 50%;
+    margin: auto;
+    color: white;
+    padding: 3rem;
+}
+
 .errorText {
     position: absolute;
     text-align: center;
@@ -153,24 +185,5 @@ $green: #49ff52;
     }
     to {
         opacity: 1;
-    }
-}
-.boardButton {
-    font-family: "Anta", sans-serif;
-    font-weight: bold;
-    font-style: normal;
-    font-size: 30pt;
-    cursor: pointer;
-    margin: auto;
-    width: 50%;
-    height: 5rem;
-    border: solid 5px rgba($color: #000000, $alpha: 0.75);
-    background-color: green;
-    background-image: url("/stone.jpg");
-    border-radius: 0.5rem;
-    color: black;
-    transition: all 0.33s ease-in-out;
-    &:hover {
-        border: solid 5px rgba($color: #ffffff, $alpha: 0.75);
     }
 }

@@ -1,3 +1,7 @@
+// This file has the helper functions for Sudoku
+// They help with solving the puzzle, generating a
+// new puzzle, and checking validity of a puzzle.
+
 const possibleNUmbers: string[] = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 export function solveSudoku(board: string[][]) {
@@ -63,6 +67,7 @@ export function isValid(
     }
     return true;
 }
+
 // Check if input board is valid
 // Similar to isValid function, accounting for empty cells
 export function validateBoard(
@@ -85,6 +90,7 @@ export function validateBoard(
     }
     let startRow = Math.floor(row / 3) * 3;
     let startCol = Math.floor(col / 3) * 3;
+
     // Iterate through sub grid to check if the number is present
     for (let i = startRow; i < startRow + 3; i++) {
         for (let j = startCol; j < startCol + 3; j++) {

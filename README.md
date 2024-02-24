@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Welcome, Jedi Master...
 
-## Getting Started
+We have found a relic that can help you with solving those tricky mind puzzles know as Sudoku.
 
-First, run the development server:
+## The Ritual
+
+To perform this ritual, you simple need clone this repository and enter the following commands.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Or...
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This relic is already located on the planet of [Vercel](https://jedi-council-sudoku.vercel.app/).
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Relic Powers
 
-## Learn More
+You can either enter the puzzle that Count Sudoku has given you, and then use the force to generate a solution.
 
-To learn more about Next.js, take a look at the following resources:
+Or, if you believe you need more training, you can ask it to create a new Sudoku puzzle for you to try.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Back To Reality
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+This app uses a recursive backtracking function to find a possible solution to the puzzle while following the rules of Sudoku.
 
-## Deploy on Vercel
+It will recursivly try to add numbers along each row, and backtracking when it comes to an invalid option (Brute Force).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The validity functions check each number individualy against every other number in its row, column and subgrid making sure it is not repeated.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+There are two validity functions. One for checking validty of new options when solving the puzzle, and one for "pre checking" the board to make sure that it is a valid board and solvable. The latter accounts for empty spaces and checking the input against itself.
+
+The board generator populates the first 8 columns in the first row with random numbers 1-9. The first 8 columns, because it seems to get stuck when trying to fill all 9. It then solves that puzzle, to make sure there is an answer, and then removes random cells to return the starting point.
+
+###
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and stlyed with [Sass](https://sass-lang.com/).

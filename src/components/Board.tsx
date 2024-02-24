@@ -1,5 +1,4 @@
-"use client";
-
+// Styles Import
 import styles from "../app/page.module.scss";
 
 export default function Board(props: {
@@ -7,17 +6,19 @@ export default function Board(props: {
     setBoard: React.Dispatch<React.SetStateAction<any>>;
     readOnly: boolean[][];
 }) {
+    // onCHange handler to populate board state
     const handleChange = (
         event: React.ChangeEvent<HTMLInputElement>,
         row: number,
         col: number
     ) => {
-        // console.log(board);
+        // Check if the input is valid for Sudoku
         if (
             (parseInt(event.target.value) >= 1 &&
                 parseInt(event.target.value) <= 9) ||
             event.target.value === ""
         ) {
+            // Shallow copy the board to manipulate state
             let shallowBoard: string[][] = [...props.board];
             shallowBoard[row][col] = event.target.value as string;
             props.setBoard(shallowBoard);

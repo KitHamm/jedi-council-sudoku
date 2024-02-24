@@ -12,6 +12,8 @@ import {
     solveSudoku,
     validateBoard,
     generateSudoku,
+    checkBoardComplete,
+    isValid,
 } from "./sudoku/sudokuHelper";
 
 // Style Imports
@@ -35,34 +37,58 @@ export default function Home() {
 
     // States for board, readOnly on cell inputs, and board validity
     const [validBoard, setValidBoard] = useState<boolean>(true);
+    const [boardComplete, setBoardComplete] = useState<boolean>(false);
+    const [showResultText, setShowResultText] = useState<boolean>(false);
+    const [resultText, setResultText] = useState<string>("");
     const [board, setBoard] = useState<string[][]>(emptyBoard);
     const [readOnly, setReadOnly] = useState<boolean[][]>(
         Array(9).fill(Array(9).fill(false))
     );
 
     function handleSolve() {
+        // Check if the board is complete first
+        if (checkBoardComplete(board)) {
+            // Check if the answer is correct
+            for (let i = 0; i < board.length; i++) {
+                for (let j = 0; j < board.length; j++) {
+                    if (!validateBoard(board, i, j, board[i][j])) {
+                        setShowResultText(true);
+                        setResultText("I am afraid this answer is incorrect");
+                        return false;
+                    }
+                }
+            }
+            setShowResultText(true);
+            setResultText("Answer is accepted.");
+            return;
+        }
         // Check the input board is valid
         for (let i = 0; i < board.length; i++) {
             for (let j = 0; j < board.length; j++) {
                 if (!validateBoard(board, i, j, board[i][j])) {
-                    setValidBoard(false);
+                    setShowResultText(true);
+                    setResultText("Not even I can solve this puzzle");
                     return false;
                 }
             }
         }
-        setValidBoard(true);
+
         // if valid => Shallow copy
         let shallowBoard = [...board];
         // replace shallow copy
         shallowBoard = solveSudoku(shallowBoard);
         // Set board
         setBoard(shallowBoard);
+        setShowResultText(false);
+        setResultText("");
     }
 
     const clearBoard = () => {
         setBoard(emptyBoard);
         handleReadOnly(emptyBoard);
         setValidBoard(true);
+        setShowResultText(false);
+        setResultText("");
     };
 
     function handleGenerate() {
@@ -70,6 +96,8 @@ export default function Home() {
         setBoard(newBoard);
         handleReadOnly(newBoard);
         setValidBoard(true);
+        setShowResultText(false);
+        setResultText("");
     }
 
     // Function to set the readOnly state of the inputs when generating a new board
@@ -126,12 +154,16 @@ export default function Home() {
                 </div>
             </div>
             <div className={styles.column}>
-                {!validBoard && (
-                    <h2 className={styles.errorText}>
-                        Not even the force can solve this puzzle
-                    </h2>
+                {showResultText && (
+                    <h2 className={styles.errorText}>{resultText}</h2>
                 )}
-                <Board board={board} setBoard={setBoard} readOnly={readOnly} />
+                <Board
+                    board={board}
+                    setBoard={setBoard}
+                    readOnly={readOnly}
+                    boardComplete={boardComplete}
+                    setBoardComplete={setBoardComplete}
+                />
             </div>
             <div className={styles.column}>
                 <div onClick={handleSolve} className={styles.forceContainer}>

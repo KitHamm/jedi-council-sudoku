@@ -1,10 +1,15 @@
+// Sudoku Helper Import
+import { checkBoardComplete } from "@/app/sudoku/sudokuHelper";
+
 // Styles Import
 import styles from "../app/page.module.scss";
 
 export default function Board(props: {
     board: string[][];
     setBoard: React.Dispatch<React.SetStateAction<any>>;
+    setBoardComplete: React.Dispatch<React.SetStateAction<any>>;
     readOnly: boolean[][];
+    boardComplete: boolean;
 }) {
     // onCHange handler to populate board state
     const handleChange = (
@@ -22,6 +27,9 @@ export default function Board(props: {
             let shallowBoard: string[][] = [...props.board];
             shallowBoard[row][col] = event.target.value as string;
             props.setBoard(shallowBoard);
+            if (checkBoardComplete(shallowBoard)) {
+                props.setBoardComplete(true);
+            }
         }
     };
 

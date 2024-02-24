@@ -126,3 +126,13 @@ export function generateSudoku() {
     }
     return newBoard;
 }
+
+export function checkBoardComplete(board: string[][]) {
+    // Check if board is complete
+    for (let i = 0; i < board.length; i++) {
+        if (board[i].includes("")) {
+            return false;
+        }
+    }
+    return true;
+}

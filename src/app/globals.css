@@ -8,7 +8,8 @@ body {
     font-weight: 400 !important;
     font-style: normal !important;
     margin: 0;
-    background-image: url("/glyph-background.png");
+    background-color: #62635e;
+    background-image: url("/glyph-background.jpg");
     background-position: center, center;
     background-size: cover;
     background-repeat: no-repeat;
